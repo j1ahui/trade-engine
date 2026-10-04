@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderBook{
+public class OrderBook {
     private List<Order> buyOrders;          // private = can only directly accessed from inside OrderBook class
     private List<Order> sellOrders;         // declaring varibale. holds Order objects
 
@@ -24,9 +24,9 @@ public class OrderBook{
             System.out.println(order);
         }
 
-        System.out.println("\nSell Orders: ");
+        System.out.println("\nSELL ORDERS: ");
         for (Order order : sellOrders) {
-            System.out.println(order)
+            System.out.println(order);
         }
     }
 

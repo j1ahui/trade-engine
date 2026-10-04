@@ -17,6 +17,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return side + "" + symbol + "" + quantity + "@ $" + price;
+        return side + "\t" + symbol + "" + quantity + "@ $" + price;
     }
 }
