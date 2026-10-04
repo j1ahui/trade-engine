@@ -10,5 +10,6 @@ public class Main {
         orderBook.addOrder(sellOrder);
 
         orderBook.printOrders();
+        orderBook.matchOrders();
     }
 }

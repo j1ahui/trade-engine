@@ -30,4 +30,19 @@ public class OrderBook {
         }
     }
 
+    public void matchOrders() {
+        for (Order buyOrder : buyOrders) {
+            for (Order sellOrder : sellOrders) {
+                if (buyOrder.getPrice() >= sellOrder.getPrice()) {
+
+                    System.out.println("\nMATCH FOUND: ");
+                    System.out.println(buyOrder);
+                    System.out.println(sellOrder);
+
+                    return;
+                }
+            }
+        }
+    }
+
 }

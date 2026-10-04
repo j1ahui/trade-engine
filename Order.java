@@ -19,4 +19,10 @@ public class Order {
     public String toString() {
         return side + "\t" + symbol + "" + quantity + "@ $" + price;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+
 }
