@@ -10,4 +10,13 @@ public class Order {
         this.quantity = quantity;
         this.price = price;
     }
+
+    public String getSide() {
+        return side;
+    }
+
+    @Override
+    public String toString() {
+        return side + "" + symbol + "" + quantity + "@ $" + price;
+    }
 }
