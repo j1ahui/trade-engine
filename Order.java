@@ -15,13 +15,25 @@ public class Order {
         return side;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
     @Override
     public String toString() {
-        return side + "\t" + symbol + "" + quantity + "@ $" + price;
+        return side + "\t" + symbol + "\t" + quantity + "\t@ $" + price;
     }
 
     public double getPrice() {
         return price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 

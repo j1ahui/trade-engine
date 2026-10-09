@@ -35,6 +35,15 @@ public class OrderBook {
             for (Order sellOrder : sellOrders) {
                 if (buyOrder.getPrice() >= sellOrder.getPrice()) {
 
+                    int tradeQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());          // partial fill. e.g buyer wanted 10, 5 only available
+
+                    Trade trade = new Trade(buyOrder.getSymbol(), tradeQuantity, sellOrder.getPrice());
+
+                    System.out.println(trade);
+
+                    buyOrder.setQuantity(buyOrder.getQuantity() - tradeQuantity);
+                    sellOrder.setQuantity(sellOrder.getQuantity() - tradeQuantity);
+
                     System.out.println("\nMATCH FOUND: ");
                     System.out.println(buyOrder);
                     System.out.println(sellOrder);
