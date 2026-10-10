@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +33,19 @@ public class OrderBook {
     }
 
     public void matchOrders() {
-        for (Order buyOrder : buyOrders) {
-            for (Order sellOrder : sellOrders) {
-                if (buyOrder.getPrice() >= sellOrder.getPrice()) {
+        Iterator<Order> buyIterator = buyOrders.iterator();
 
-                    int tradeQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());          // partial fill. e.g buyer wanted 10, 5 only available
+        while (buyIterator.hasNext()) {
+            Order buyOrder = buyIterator.next();
+
+            Iterator<Order> sellIterator = sellOrders.iterator();
+
+            while (sellIterator.hasNext()) {
+                Order sellOrder = sellIterator.next();
+
+                if (buyOrder.getSymbol().equals(sellOrder.getSymbol()) && buyOrder.getPrice() >= sellOrder.getPrice()) {
+
+                    int tradeQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());
 
                     Trade trade = new Trade(buyOrder.getSymbol(), tradeQuantity, sellOrder.getPrice());
 
@@ -48,10 +58,19 @@ public class OrderBook {
                     System.out.println(buyOrder);
                     System.out.println(sellOrder);
 
-                    return;
+                    if (sellOrder.getQuantity() == 0) {
+                        sellIterator.remove();
+                    }
+
+                    if (buyOrder.getQuantity() == 0) {
+                        buyIterator.remove();
+                        break;
+                    }
+
+
                 }
             }
         }
     }
-
 }
+
