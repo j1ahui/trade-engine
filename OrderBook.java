@@ -32,6 +32,34 @@ public class OrderBook {
         }
     }
 
+    public void printRemainingOrders() {
+        int totalOrders = buyOrders.size() + sellOrders.size();         // size() returns the number in list. counts elements in a collection.
+
+        System.out.println("\nREMAINING ORDERS: " + totalOrders);
+        printOrders();
+    }
+
+    public void printRemainingQuantity() {
+        int totalBuyQuantity = 0;
+        int totalSellQuantity = 0;
+
+        for (Order order : buyOrders) {
+            totalBuyQuantity += order.getQuantity();
+        }
+
+        for (Order order : sellOrders) {
+            totalSellQuantity += order.getQuantity();
+        }
+
+        int totalQuantity = totalBuyQuantity + totalSellQuantity;
+
+        System.out.println("\nREMAINING TOTAL QUANTITY: " + totalQuantity + " shares");
+        System.out.println("REMAINING BUY QUANTITY: " + totalBuyQuantity + " shares");          // reps supply and demand
+        System.out.println("REMAINING SELL QUANTITY: " + totalSellQuantity + " shares");
+
+
+    }
+
     public void matchOrders() {
         Iterator<Order> buyIterator = buyOrders.iterator();
 

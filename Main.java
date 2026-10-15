@@ -3,6 +3,7 @@ public class Main {
         testBuyHasRemaining();
         testSellHasRemaining();
         testNoTrade();
+        testSellAgainstMultipleBuys();
     }
 
     public static void testBuyHasRemaining() {
@@ -18,6 +19,8 @@ public class Main {
 
         orderBook.printOrders();
         orderBook.matchOrders();
+        orderBook.printRemainingOrders();
+        orderBook.printRemainingQuantity();
 
     }
 
@@ -34,6 +37,8 @@ public class Main {
 
         orderBook.printOrders();
         orderBook.matchOrders();
+        orderBook.printRemainingOrders();
+        orderBook.printRemainingQuantity();
     }
 
     public static void testNoTrade() {
@@ -49,6 +54,29 @@ public class Main {
 
         orderBook.printOrders();
         orderBook.matchOrders();
+        orderBook.printRemainingOrders();
+        orderBook.printRemainingQuantity();
+    }
+
+    public static void testSellAgainstMultipleBuys() {
+        System.out.println("\nTest 4: Sell against Multiple Buys");
+
+        OrderBook orderBook = new OrderBook();
+
+        Order buy1 = new Order("AAPL", "BUY", 4, 150.00);
+        Order buy2 = new Order("AAPL", "BUY", 3, 150.00);
+        Order sell = new Order("AAPL", "SELL", 10, 150.00);
+
+        orderBook.addOrder(buy1);
+        orderBook.addOrder(buy2);
+        orderBook.addOrder(sell);
+
+        orderBook.matchOrders();
+        orderBook.printOrders();
+        orderBook.printRemainingOrders();
+        orderBook.printRemainingQuantity();
+
+
     }
 
 
